@@ -38,35 +38,34 @@ def string_pos(a, b):
 	while len(z) !=0:
 		try:
 			pos = a.index(b, pos+ len(b))
+			print(pos)
 			z = a[pos:]
 			lista.append(pos)
 		except ValueError as error:
 			return lista
 
-def sumar_listas():
-	def recursion(a, b, c = []):
-		if b not in a:
-			return []
-		else:
-			try:
-				posicion_str = a.index(b, 0 + len(b))
-				c.append(posicion_str)
-				return recursion(a[posicion_str:],b,c)
-			except ValueError as error:
-				return c
-	suma = 0
-	lista = []
-	for i in recursion('Un tete a tete con Tete', ' '):
-		suma += i
-		lista.append(suma)
-	return lista
+def recursion(a, b,lista, posicion):
+	if b not in a:
+		return 'mama mia'
+	else:
+		try:
+			lista.append(posicion)
+			return recursion(a,b,lista, posicion = a.index(b, posicion+len(b)))
+		except ValueError as error:
+			string = a[:len(b)]
+			if string == b:
+				return lista
+			else:
+				lista.pop(0)
+				return lista
+print(recursion('Un tete a tete con Tete', 'te', lista =[], posicion=0))
 def replicar_lista(lista, numero):
 	if len(lista) == 0 or numero == 0:
 		return []
 	else:
 		return [lista[0]]*numero + replicar_lista(lista[1:],numero)
 def search():
-	lista =[1,2,2,2,2,2,5,5,6,6,7,6,8]*10000000
+	lista =[1,2,2,2,2,2,5,5,6,6,7,6,8]*1000	
 	number = 6
 	low = 0
 	high = len(lista)-1
@@ -96,4 +95,4 @@ def search():
 				return binary_search(lista, number,low = mid+1, high=high)
 	position = binary_search(lista,number, low, high)
 	return position
-print(search())
+
