@@ -5,8 +5,6 @@
 int divide_array(int *array, int size);
 void print_array(int *array, int size);
 int quicksort(int *array, int size);
-int mergesort(int *array, int size, int *new_array);
-int merge(int *new_array,int *left, int *right, int size_l, int size_r);
 
 int main(){
     srand(time(NULL));
